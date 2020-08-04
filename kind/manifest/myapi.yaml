@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapi
+spec:
+  ports:
+    - port: 8000
+      protocol: TCP
+      targetPort: 8000
+      name: http
+  selector:
+    app: myapi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapi-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapi
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: myapi
+        version: v1
+    spec:
+      containers:
+        - image: myapi:v1
+          imagePullPolicy: IfNotPresent
+          name: myapi
+          env:
+            - name: MSG
+              value: This app is version 1
+          ports:
+            - containerPort: 8000
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: myapi-v2
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: myapi
+#       version: v2
+#   template:
+#     metadata:
+#       labels:
+#         app: myapi
+#         version: v2
+#     spec:
+#       containers:
+#         - image: myapi:v1
+#           imagePullPolicy: IfNotPresent
+#           name: myapi
+#           env:
+#             - name: MSG
+#               value: New app is version 2
+#           ports:
+#             - containerPort: 8000

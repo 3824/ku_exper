@@ -1,0 +1,1 @@
+mysql -uroot -ppassword --local-infile car -e "LOAD DATA LOCAL INFILE '/docker-entrypoint-initdb.d/e.csv' INTO TABLE vehicles FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\\n' IGNORE 1 LINES"

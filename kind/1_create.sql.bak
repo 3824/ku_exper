@@ -1,0 +1,32 @@
+CREATE DATABASE car;
+use car;
+
+CREATE TABLE vehicles (
+    id INT(11) NOT NULL,
+    url VARCHAR(64),
+    region VARCHAR(64),
+    region_url VARCHAR(64),
+    price INT(11),
+    year INT(5),
+    manufacturer VARCHAR(64),
+    model VARCHAR(64),
+    condition VARCHAR(64),
+    cylinders VARCHAR(64),
+    fuel VARCHAR(64),
+    odometer VARCHAR(64),
+    title_status VARCHAR(64),
+    transmission VARCHAR(64),
+    vin VARCHAR(64),
+    drive VARCHAR(64),
+    size VARCHAR(64),
+    type VARCHAR(64),
+    paint_color VARCHAR(64),
+    image_url VARCHAR(64),
+    description VARCHAR(256),
+    county VARCHAR(64),
+    state VARCHAR(64),
+    lat FLOAT(32),
+    long FLOAT(32),
+    PRIMARY KEY (id)
+);
+
